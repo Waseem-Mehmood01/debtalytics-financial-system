@@ -1,0 +1,83 @@
+<?php
+session_start();
+// echo "<pre>";
+// print_r($_SERVER);
+// die(1);
+//echo "TestBranch";
+// PHP Ledger Starting Point
+require_once('functions.php');
+if (isset($_GET['logout'])){
+	if($_GET['logout'] == 1) {
+		unset($_SESSION['is_logged']);
+		unset($_SESSION['username']);
+		unset($_SESSION["is_super_admin"]);
+		session_destroy();
+	}
+}
+
+// print_r($_SESSION);
+// die(1);
+
+$include_file = "";
+$path ="";
+if (isset($_GET['route'])) {
+$path = $_GET['route'];
+} else {
+	if (isset($_POST['route'])) {
+	$path = $_POST['route'];
+	}
+}
+if($path <> "") { // Checks if file really exists before including it
+	$include_file = "./".$path.".php";
+	if(!file_exists($include_file)) {
+		$include_file = "includes/page-parts/content-404.php";
+	}
+		
+}
+// echo $_POST['route']."aji"; die(1);
+ 
+?>
+<?php include_once('includes/page-parts/header.php');
+
+ 
+ ?>
+ 
+<?php
+
+if ( (isset($_SESSION['is_logged'])) AND (isset($_SESSION['is_super_admin'])) AND ($_SESSION['is_logged'] == 1)) {
+
+?>
+<?php //include_once('includes/page-parts/top-nav.php'); ?>
+<?php include_once('includes/page-parts/sidebar.php'); ?>
+<?php include_once('includes/page-parts/content-top.php'); ?>
+
+<?php 
+		if($include_file <> "") {
+			include($include_file);
+		}  else {			 
+		 include('includes/page-parts/content-default.php');  
+		}
+
+ ?>
+
+<?php include_once('includes/page-parts/content-bottom.php'); ?> 
+<?php include_once('includes/page-parts/footer.php'); ?>
+<?php 
+} else { //if not logged in
+	//echo '<script>window.location.replace("./login_page.php");</script>';
+	// print_r($path);die(1);
+	$path = '';
+	if(isset($_GET['fg']) and $_GET['fg'] ==1 ){
+		$path  = 'forgot_password';
+	}
+	if($path == "forgot_password") {
+		include_once('forgot_password.php');	
+	} else {
+		include_once('login_page.php');
+	}
+	
+	
+ include_once('includes/page-parts/content-bottom.php');
+ include_once('includes/page-parts/footer.php'); 
+ }
+?>
