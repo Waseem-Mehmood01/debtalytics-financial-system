@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="col-10">
                                         <div class="card-body p-4 text-center"><h4
-                                                    class="text-dark mb-2 number-font mt-2"><?php echo number_format((int)getDailyAdminGrossSale($_SESSION['company_id'])); ?></h4>
+                                                    class="text-dark mb-2 number-font mt-2"><?php echo number_format((int)getMonthlyAdminDeals($_SESSION['company_id'])); ?></h4>
                                             <h4 class="fw-normal mb-0 text-uppercase text-dark">Today's Net
                                                 Revenue</h4></div>
                                     </div>

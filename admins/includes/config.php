@@ -15,8 +15,8 @@ $now = date("Y-m-d H:i:s");
 //PUSHER CREDENTIALS
 
 define('PUSHER_APP_ID', '1341258');
-define('PUSHER_APP_KEY', '0d53a49dd4bbe23f0a17');
-define('PUSHER_APP_SECRET', 'a1c3fc1e1c878c3fc4a5');
+define('PUSHER_APP_KEY', '');
+define('PUSHER_APP_SECRET', '');
 define('PUSHER_APP_CLUSTER', 'ap1');
  
 	

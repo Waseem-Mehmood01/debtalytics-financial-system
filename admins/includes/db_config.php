@@ -5,7 +5,7 @@ if(session_id() == '') {
     session_start();
 }  
 // SEND GRID API 
-//define('SENDGRID_API_KEY','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');
+//define('SENDGRID_API_KEY','');
     			/*
     	$apiKey = SENDGRID_API_KEY;
 		$email = new \SendGrid\Mail\Mail(); 
